@@ -20,6 +20,7 @@ public class Users {
 	private String addrRef;
 	private String userQuit;
 	private LocalDateTime userInsertDate;
+	private LocalDateTime userUpdateDate;
 	
 	private List<Orders> orderList;
 	private List<Cart> carts;
