@@ -13,9 +13,9 @@ public class OrderLine {
 	private Long goodsId;
 	private int orderLineQty;
 	private int priceQty;
+	private String orderLineCanceled;
 	private LocalDateTime orderLineInsertDate;
 	private LocalDateTime orderLineUpdateDate;
-	
 	
 	private Orders orders;
 	private Goods goods;
