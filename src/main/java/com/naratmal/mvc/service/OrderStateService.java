@@ -3,6 +3,7 @@ package com.naratmal.mvc.service;
 import java.sql.SQLException;
 import java.util.List;
 
+import com.naratmal.mvc.exception.NotExistException;
 import com.naratmal.mvc.vo.OrderState;
 
 public interface OrderStateService {
