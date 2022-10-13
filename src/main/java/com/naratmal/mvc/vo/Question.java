@@ -12,6 +12,7 @@ import lombok.Getter;
 @Builder
 public class Question {
 	private Long questionId;
+	private Long questionClassId;
 	private String userId;
 	private String questionTitle;
 	private String questionContent;
@@ -19,8 +20,10 @@ public class Question {
 	private LocalDateTime questionInsertDate;
 	private LocalDateTime questionUpdateDate;
 	private String answeredState;
+	private String questionDeleted;
 	
 	private List<Answer> answers;
 	
 	private User user;
+	private QuestionClass questionClass;
 }
