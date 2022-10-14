@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+	"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+	<definition name="main-layout" template="/WEB-INF/tiles/main-layout.jsp">
+		<put-attribute name="main-header" value="/WEB-INF/tiles/main-header.jsp"/>
+		<put-attribute name="main-footer" value="/WEB-INF/tiles/main-footer.jsp"/>
+	</definition>
+	
+	<!-- Controller에서 return하는 뷰의 정보에 따라 화면 구성 처리 -->
+	<definition name="main/**" extends="main-layout">
+		<put-attribute name="main-content" value="/WEB-INF/views/main/{1}.jsp"/>
+	</definition>
+</tiles-definitions>
