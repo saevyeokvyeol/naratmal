@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="userMapper">
+ 	<insert id="insertUser" parameterType="users">
+ 		insert
+ 		into users
+ 		values(#{userId}, #{userName}, #{userPassword}, #{userTel}, #{zipcode}, #{addr}, #{addrDetail}, 'F', systimestamp, systimestamp)
+ 	</insert>
+ 	
+ 	<select id="findById" parameterType="users" resultType="string">
+ 		select *
+ 		from users
+ 		where user_id = #{_parameter}
+ 	</select>
+ 	
+ 	<select id="findUsers" parameterType="users" resultType="string">
+ 		select *
+ 		from users
+ 		<trim prefix="where" prefixOverrides="and">
+ 			<if test="userId != null">
+ 				user_id = #{userId}
+ 			</if>
+ 			<if test="userName != null">
+ 				user_name = #{userName}
+ 			</if>
+ 			<if test="userTel != null">
+ 				user_tel = #{userTel}
+ 			</if>
+ 			<if test="addr != null">
+ 				addr = #{addr}
+ 			</if>
+ 			<if test="userQuit != null">
+ 				user_quit = #{userQuit}
+ 			</if>
+ 		</trim>
+ 		order by user_insert_date
+ 	</select>
+</mapper>

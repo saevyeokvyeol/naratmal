@@ -32,13 +32,6 @@ public interface UserService {
 	void updateUser(Users users) throws SQLException, NotLoginException, NotDBInputException;
 	
 	/**
-	 * 아이디 찾기
-	 * @param: String userId
-	 * @return: Users
-	 * */
-	Users findById(String userId) throws SQLException;
-	
-	/**
 	 * 회원 검색
 	 * @param: Users(userId, userName, userTel, userBirth, addr, userQuit 중
 	 * 			입력된 값에 따라 동적으로 검색)

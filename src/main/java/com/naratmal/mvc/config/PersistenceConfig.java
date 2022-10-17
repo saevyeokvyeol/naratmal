@@ -60,7 +60,7 @@ public class PersistenceConfig implements TransactionManagementConfigurer {
 		factoryBean.setMapperLocations(resources);
 		
 		// 클래스 별칭 등록: yuda.mvc.dto 팩토리 안의 모든 클래스를 첫 글자를 소문자로 바꾼 클래스명으로
-		factoryBean.setTypeAliasesPackage("com.naratmal.mvc.dto");
+		factoryBean.setTypeAliasesPackage("com.naratmal.mvc.vo");
 		
 		return factoryBean;
 	}
