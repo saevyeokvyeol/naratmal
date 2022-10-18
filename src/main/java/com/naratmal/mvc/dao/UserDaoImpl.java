@@ -18,7 +18,7 @@ public class UserDaoImpl implements UserDao {
 
 	/**
 	 * 회원 가입
-	 * @param: Users(userId, userName, userPassword, userTel, userBirth, zipcode, addr, addrDetail)
+	 * @param: Users(userId, userName, userPassword, userTel, zipcode, addr, addrDetail)
 	 * @return: int(insert 결과)
 	 * */
 	@Override

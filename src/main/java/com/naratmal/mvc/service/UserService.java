@@ -13,8 +13,7 @@ import com.naratmal.mvc.vo.Users;
 public interface UserService {
 	/**
 	 * 회원 가입
-	 * @param: Users(userId, userName, userPassword, userTel, userBirth, zipcode, addr,
-	 * 			addrDetail, addrRef)
+	 * @param: Users(userId, userName, userPassword, userTel, zipcode, addr, addrDetail)
 	 * */
 	void insertUser(Users users) throws SQLException, DuplicatedException, NotDBInputException;
 	
