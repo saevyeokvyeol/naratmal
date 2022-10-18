@@ -5,19 +5,19 @@ import java.util.List;
 
 import lombok.Builder;
 import lombok.Getter;
+import lombok.ToString;
 
 @Getter
 @Builder
+@ToString
 public class Users {
 	private String userId;
 	private String userName;
 	private String userPassword;
 	private String userTel;
-	private LocalDateTime userBirth;
 	private String zipcode;
 	private String addr;
 	private String addrDetail;
-	private String addrRef;
 	private String userQuit;
 	private LocalDateTime userInsertDate;
 	private LocalDateTime userUpdateDate;

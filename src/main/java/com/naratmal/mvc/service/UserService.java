@@ -13,8 +13,7 @@ import com.naratmal.mvc.vo.Users;
 public interface UserService {
 	/**
 	 * 회원 가입
-	 * @param: Users(userId, userName, userPassword, userTel, userBirth, zipcode, addr,
-	 * 			addrDetail, addrRef)
+	 * @param: Users(userId, userName, userPassword, userTel, zipcode, addr, addrDetail)
 	 * */
 	void insertUser(Users users) throws SQLException, DuplicatedException, NotDBInputException;
 	
@@ -30,13 +29,6 @@ public interface UserService {
 	 * @param: Users(입력된 값에 따라 동적으로 회원 정보 수정)
 	 * */
 	void updateUser(Users users) throws SQLException, NotLoginException, NotDBInputException;
-	
-	/**
-	 * 아이디 찾기
-	 * @param: String userId
-	 * @return: Users
-	 * */
-	Users findById(String userId) throws SQLException;
 	
 	/**
 	 * 회원 검색

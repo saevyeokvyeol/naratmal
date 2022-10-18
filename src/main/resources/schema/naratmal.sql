@@ -24,11 +24,9 @@ CREATE TABLE users(
 	user_name	VARCHAR2(15)		NOT NULL,
 	user_password	varchar2(255)		NOT NULL,
 	user_tel	varchar2(11)		NOT NULL,
-	user_birth	timestamp		NOT NULL,
 	zipcode	varchar2(5)		NOT NULL,
 	addr	varchar2(100)		NOT NULL,
 	addr_detail	varchar2(100)		NOT NULL,
-	addr_ref	varchar2(100),
 	user_quit	varchar2(2)		DEFAULT 'F' NOT NULL check(user_quit in ('F', 'T')),
 	user_insert_date	timestamp		DEFAULT SYSTIMESTAMP NOT NULL,
 	user_update_date	timestamp		DEFAULT SYSTIMESTAMP NOT NULL
