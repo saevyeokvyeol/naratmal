@@ -7,13 +7,19 @@
  		values(#{userId}, #{userName}, #{userPassword}, #{userTel}, #{zipcode}, #{addr}, #{addrDetail}, 'F', systimestamp, systimestamp)
  	</insert>
  	
- 	<select id="findById" parameterType="users" resultType="string">
+ 	<select id="login" parameterType="users" resultType="users">
+ 		select *
+ 		from users
+ 		where user_id = #{userId} and user_password = #{userPassword}
+ 	</select>
+
+ 	<select id="findById" parameterType="string" resultType="users">
  		select *
  		from users
  		where user_id = #{_parameter}
  	</select>
- 	
- 	<select id="findUsers" parameterType="users" resultType="string">
+
+ 	<select id="findUsers" parameterType="users" resultType="users">
  		select *
  		from users
  		<trim prefix="where" prefixOverrides="and">

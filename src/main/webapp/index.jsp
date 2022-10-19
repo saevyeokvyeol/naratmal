@@ -10,5 +10,6 @@
 	</head>
 	<body>
 		<h1>빠라바라바바밤</h1>
+			<h3>${loginUser}</h3>
 	</body>
 </html>

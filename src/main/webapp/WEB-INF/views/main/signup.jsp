@@ -111,8 +111,8 @@
 				</div>
 				<span id="guide" style="color:#999;display:none"></span>
 				
-				<input type="submit" class="btn btn-dark" value="로그인">
-				<a class="btn btn-dark">회원가입</a>
+				<input type="submit" class="btn btn-dark" value="회원가입">
+				<input type="reset" class="btn btn-dark" value="취소">
 			</form>
 		</div>
 	</body>

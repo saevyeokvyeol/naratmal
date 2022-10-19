@@ -46,8 +46,11 @@ public class UserServiceImpl implements UserService {
 	 * */
 	@Override
 	public Users login(Users users) throws SQLException, NotExistException {
-		// TODO Auto-generated method stub
-		return null;
+		Users loginUser = userDao.login(users);
+		if (loginUser == null) {
+			throw new NotExistException("아이디 혹은 비밀번호가 올바르지 않습니다.");
+		}
+		return loginUser;
 	}
 
 	/**

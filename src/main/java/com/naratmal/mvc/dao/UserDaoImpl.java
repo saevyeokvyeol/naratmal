@@ -33,8 +33,7 @@ public class UserDaoImpl implements UserDao {
 	 * */
 	@Override
 	public Users login(Users users) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectOne("userMapper.login", users);
 	}
 
 	/**
