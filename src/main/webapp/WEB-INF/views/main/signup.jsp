@@ -71,7 +71,7 @@
 	<body>
 		<div id="main-content-body">
 			<h2>회원가입</h2>
-			<form action="${pageContext.request.contextPath}/main/signup-complete" method="post">
+			<form action="${path}/main/signup-complete" method="post">
 				<div class="form-floating">
 					<input type="text" class="form-control" id="floatingId" placeholder="아이디" name="userId">
 					<label for="floatingId">아이디</label>

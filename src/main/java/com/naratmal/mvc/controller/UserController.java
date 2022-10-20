@@ -3,6 +3,7 @@ package com.naratmal.mvc.controller;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -39,10 +40,16 @@ public class UserController {
 	public void login() {}
 	
 	@RequestMapping("login-complete")
-	public String loginComplete(Users users, HttpSession session) throws SQLException, NotExistException {
+	public String loginComplete(Users users, HttpSession session, HttpServletRequest request) throws SQLException, NotExistException {
 		Users loginUser = userService.login(users);
 		session.setAttribute("loginUser", loginUser);
-		return "redirect:/";
+		return "redirect:" + request.getHeader("Referer");
+	}
+	
+	@RequestMapping("logout")
+	public String logout(HttpSession session, HttpServletRequest request) {
+		session.invalidate();
+		return "redirect:" + request.getHeader("Referer");
 	}
 
 	@ExceptionHandler(Exception.class) // Controller에서 입력한 Exception 발생 시 이동
