@@ -23,10 +23,17 @@ public interface UserService {
 	 * @return: Users
 	 * */
 	Users login(Users users) throws SQLException, NotExistException;
+	
+	/**
+	 * 아이디 찾기
+	 * @param: String userId
+	 * @return: Users
+	 * */
+	Users findById(String userId) throws SQLException, NotExistException;
 
 	/**
 	 * 회원 정보 수정
-	 * @param: Users(입력된 값에 따라 동적으로 회원 정보 수정)
+	 * @param: Users(userPassword, userTel, zipcode, addr, addrDetail 중 입력된 값에 따라 동적으로 회원 정보 수정)
 	 * */
 	void updateUser(Users users) throws SQLException, NotLoginException, NotDBInputException;
 	

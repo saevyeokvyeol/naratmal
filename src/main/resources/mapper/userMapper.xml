@@ -12,6 +12,25 @@
  		from users
  		where user_id = #{userId} and user_password = #{userPassword}
  	</select>
+ 	
+ 	<update id="updateUser" parameterType="users">
+ 		update users
+ 		<trim prefix="set" prefixOverrides=", " suffix=", user_update_date = systimestamp">
+ 			<if test="userTel != null">
+ 				user_tel = #{userTel}
+ 			</if>
+ 			<if test="zipcode != null">
+ 				, zipcode = #{zipcode}
+ 			</if>
+ 			<if test="addr != null">
+ 				, addr = #{addr}
+ 			</if>
+ 			<if test="addrDetail != null">
+ 				, addr_detail = #{addrDetail}
+ 			</if>
+ 		</trim>
+ 		where user_id = #{userId}
+ 	</update>
 
  	<select id="findById" parameterType="string" resultType="users">
  		select *

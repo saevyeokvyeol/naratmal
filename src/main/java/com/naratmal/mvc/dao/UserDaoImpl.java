@@ -37,17 +37,6 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	/**
-	 * 회원 정보 수정
-	 * @param: Users(입력된 값에 따라 동적으로 회원 정보 수정)
-	 * @return: int(update 결과)
-	 * */
-	@Override
-	public int updateUser(Users users) throws SQLException {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	/**
 	 * 아이디 찾기
 	 * @param: String userId
 	 * @return: Users
@@ -55,6 +44,16 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public Users findById(String userId) throws SQLException {
 		return sqlSession.selectOne("userMapper.findById", userId);
+	}
+
+	/**
+	 * 회원 정보 수정
+	 * @param: Users(userTel, zipcode, addr, addrDetail 중 입력된 값에 따라 동적으로 회원 정보 수정)
+	 * @return: int(update 결과)
+	 * */
+	@Override
+	public int updateUser(Users users) throws SQLException {
+		return sqlSession.update("userMapper.updateUser", users);
 	}
 
 	/**

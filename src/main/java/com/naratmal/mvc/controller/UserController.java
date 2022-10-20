@@ -15,13 +15,14 @@ import org.springframework.web.servlet.ModelAndView;
 import com.naratmal.mvc.exception.DuplicatedException;
 import com.naratmal.mvc.exception.NotDBInputException;
 import com.naratmal.mvc.exception.NotExistException;
+import com.naratmal.mvc.exception.NotLoginException;
 import com.naratmal.mvc.service.UserService;
 import com.naratmal.mvc.vo.Users;
 
 import lombok.RequiredArgsConstructor;
 
 @Controller
-@RequestMapping("main/")
+@RequestMapping("main/user/")
 @RequiredArgsConstructor
 public class UserController {
 	private final UserService userService;
@@ -43,13 +44,26 @@ public class UserController {
 	public String loginComplete(Users users, HttpSession session, HttpServletRequest request) throws SQLException, NotExistException {
 		Users loginUser = userService.login(users);
 		session.setAttribute("loginUser", loginUser);
-		return "redirect:" + request.getHeader("Referer");
+		return "redirect:/main/user/profile";
 	}
 	
 	@RequestMapping("logout")
 	public String logout(HttpSession session, HttpServletRequest request) {
 		session.invalidate();
 		return "redirect:" + request.getHeader("Referer");
+	}
+	
+	@RequestMapping("profile")
+	public void profile(Model model, HttpSession session) throws SQLException, NotExistException {
+		Users loginUser = (Users)session.getAttribute("loginUser");
+		Users users = userService.findById(loginUser.getUserId());
+		model.addAttribute("users", users);
+	}
+	
+	@RequestMapping("update-profile")
+	public String updateProfile(Users users) throws SQLException, NotLoginException, NotDBInputException {
+		userService.updateUser(users);
+		return "redirect:/main/user/profile";
 	}
 
 	@ExceptionHandler(Exception.class) // Controller에서 입력한 Exception 발생 시 이동

@@ -12,7 +12,7 @@
 	</head>
 	<body>
 		<div id="main-content-body">
-			<form action="${pageContext.request.contextPath}/main/login-complete" method="post">
+			<form action="${path}/main/user/login-complete" method="post">
 				<div class="form-floating">
 					<input type="text" class="form-control" id="floatingId" name="userId" placeholder="아이디">
 					<label for="floatingId">아이디</label>

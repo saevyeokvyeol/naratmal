@@ -20,13 +20,6 @@ public interface UserDao {
 	 * @return: Users
 	 * */
 	Users login(Users users) throws SQLException;
-
-	/**
-	 * 회원 정보 수정
-	 * @param: Users(입력된 값에 따라 동적으로 회원 정보 수정)
-	 * @return: int(update 결과)
-	 * */
-	int updateUser(Users users) throws SQLException;
 	
 	/**
 	 * 아이디 찾기
@@ -34,11 +27,17 @@ public interface UserDao {
 	 * @return: Users
 	 * */
 	Users findById(String userId) throws SQLException;
+
+	/**
+	 * 회원 정보 수정
+	 * @param: Users(userPassword, userTel, zipcode, addr, addrDetail 중 입력된 값에 따라 동적으로 회원 정보 수정)
+	 * @return: int(update 결과)
+	 * */
+	int updateUser(Users users) throws SQLException;
 	
 	/**
 	 * 회원 검색
-	 * @param: Users(userId, userName, userTel, userBirth, addr, userQuit 중
-	 * 			입력된 값에 따라 동적으로 검색)
+	 * @param: Users(userId, userName, userTel, userBirth, addr, userQuit 중 입력된 값에 따라 동적으로 검색)
 	 * 			Page(null이냐 아니냐에 따라서 동적으로 페이징 처리)
 	 * @return: List<Users>
 	 * */

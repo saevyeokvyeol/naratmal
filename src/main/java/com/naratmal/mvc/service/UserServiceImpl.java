@@ -54,20 +54,38 @@ public class UserServiceImpl implements UserService {
 	}
 
 	/**
+	 * 아이디 찾기
+	 * @param: String userId
+	 * @return: Users
+	 * */
+	@Override
+	public Users findById(String userId) throws SQLException, NotExistException {
+		Users users = userDao.findById(userId);
+		
+		if (users == null) {
+			throw new NotExistException("아이디에 해당하는 회원이 존재하지 않습니다.");
+		}
+		
+		return users;
+	}
+
+	/**
 	 * 회원 정보 수정
-	 * @param: Users(입력된 값에 따라 동적으로 회원 정보 수정)
+	 * @param: Users(userPassword, userTel, zipcode, addr, addrDetail 중 입력된 값에 따라 동적으로 회원 정보 수정)
 	 * @return: int(update 결과)
 	 * */
 	@Override
 	public void updateUser(Users users) throws SQLException, NotLoginException, NotDBInputException {
-		// TODO Auto-generated method stub
-
+		int result = userDao.updateUser(users);
+		System.out.println(result);
+		if (result != 1) {
+			throw new NotDBInputException("회원 정보 수정에 실패했습니다.");
+		}
 	}
 
 	/**
 	 * 회원 검색
-	 * @param: Users(userId, userName, userTel, userBirth, addr, userQuit 중
-	 * 			입력된 값에 따라 동적으로 검색)
+	 * @param: Users(userId, userName, userTel, addr, userQuit 중 입력된 값에 따라 동적으로 검색)
 	 * 			Page(null이냐 아니냐에 따라서 동적으로 페이징 처리)
 	 * @return: List<Users>
 	 * */
@@ -75,5 +93,4 @@ public class UserServiceImpl implements UserService {
 	public List<Users> findUsers(Users users, Page page) throws SQLException {
 		return userDao.findUsers(users, page);
 	}
-
 }
