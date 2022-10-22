@@ -29,6 +29,31 @@
 		values(goods_id_seq.nextval, #{goodsClassId}, 1, #{goodsName}, #{goodsDetail}, #{goodsThumbnail}, #{goodsPrice}, systimestamp, systimestamp)
 	</insert>
 	
+	<update id="updateGoods" parameterType="goods">
+		update goods
+		<trim prefix="set" prefixOverrides=", " suffix=", goods_update_date = systimestamp">
+			<if test="goodsClassId != null">
+				goods_class_id = #{goodsClassId}
+			</if>
+			<if test="goodsStateId != null">
+				, goods_State_Id = #{goodsStateId}
+			</if>
+			<if test="goodsName != null">
+				, goods_Name = #{goodsName}
+			</if>
+			<if test="goodsDetail != null">
+				, goods_Detail = #{goodsDetail}
+			</if>
+			<if test="goodsThumbnail != null">
+				, goods_Thumbnail = #{goodsThumbnail}
+			</if>
+			<if test="goodsPrice != null">
+				, goods_Price = #{goodsPrice}
+			</if>
+		</trim>
+		where goods_id = #{goodsId}
+	</update>
+	
 	<select id="findGoods" parameterType="map" resultMap="goodsMap">
  		select * from
  		(select go.*, ROWNUM rnum from
@@ -38,9 +63,6 @@
 		join goods_state gs
 		on g.goods_state_id = gs.goods_state_id
  		<trim prefix="where" prefixOverrides="and">
- 			<if test="goods.goodsId != null">
- 				goodsId = #{goods.goodsId}
- 			</if>
  			<if test="goods.goodsClassId != null">
  				and goods_class_id = #{goods.goodsClassId}
  			</if>
@@ -55,6 +77,15 @@
  		where rnum <![CDATA[>=]]> #{start} and rnum <![CDATA[<=]]> #{end}
 	</select>
 	
+	<select id="findGoodsByGoodsId" parameterType="long" resultMap="goodsMap">
+ 		select g.*, gc.goods_class_name, gs.goods_state_name
+		from goods g inner join goods_class gc
+		on g.goods_class_id = gc.goods_class_id
+		join goods_state gs
+		on g.goods_state_id = gs.goods_state_id
+		where goods_id = #{goodsId}
+	</select>
+	
 	<select id="findAllGoodsClass" resultType="goodsClass">
 		select * from goods_class
 	</select>
@@ -66,9 +97,6 @@
  	<select id="getTotalCount" parameterType="goods" resultType="integer">
  		select count(*) from goods
  		<trim prefix="where" prefixOverrides="and">
- 			<if test="goodsId != null">
- 				goodsId = #{goodsId}
- 			</if>
  			<if test="goodsClassId != null">
  				and goods_class_id = #{goodsClassId}
  			</if>

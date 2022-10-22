@@ -36,12 +36,11 @@ public class GoodsDaoImpl implements GoodsDao {
 	 * */
 	@Override
 	public int updateGoods(Goods goods) throws SQLException {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.insert("goodsMapper.updateGoods", goods);
 	}
 
 	/**
-	 * 상품 검색
+	 * 상품 리스트 검색
 	 * @param: Goods goods(상품 아이디, 상품 클래스 아이디, 상품 이름, 상품 상태 아이디 중 입력한 컬럼)
 	 * @return: List<Goods>
 	 * */
@@ -57,6 +56,16 @@ public class GoodsDaoImpl implements GoodsDao {
 		map.put("start", start);
 		map.put("end", end);
 		return sqlSession.selectList("goodsMapper.findGoods", map);
+	}
+
+	/**
+	 * 상품 아이디로 상품 검색
+	 * @param: Long goodsId
+	 * @return: Goods
+	 * */
+	@Override
+	public Goods findGoodsByGoodsId(Long goodsId) throws SQLException {
+		return sqlSession.selectOne("goodsMapper.findGoodsByGoodsId", goodsId);
 	}
 	
 	/**

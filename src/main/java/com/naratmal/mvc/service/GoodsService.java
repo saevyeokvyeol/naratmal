@@ -27,4 +27,11 @@ public interface GoodsService {
 	 * @return: List<Goods>
 	 * */
 	List<Goods> findGoods(Goods goods, PageCnt pageCnt) throws SQLException;
+
+	/**
+	 * 상품 아이디로 상품 검색
+	 * @param: Long goodsId
+	 * @return: Goods
+	 * */
+	public Goods findGoodsByGoodsId(Long goodsId) throws SQLException, NotExistException;
 }

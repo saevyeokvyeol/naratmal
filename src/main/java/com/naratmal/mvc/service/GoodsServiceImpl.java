@@ -42,8 +42,13 @@ public class GoodsServiceImpl implements GoodsService {
 	 * */
 	@Override
 	public void updateGoods(Goods goods) throws SQLException, NotExistException, NotDBInputException {
-		// TODO Auto-generated method stub
-
+		if (goods.getGoodsClassId() != 0) {
+			GoodsClass goodsClass = goodsClassDao.findGoodsClass(goods.getGoodsClassId());
+			if (goodsClass == null) throw new NotExistException("상품 클래스 코드가 잘못되어 상품이 수정되지 않았습니다.");
+		}
+		
+		int result = goodsDao.updateGoods(goods);
+		if (result != 1) throw new NotDBInputException("상품이 정상적으로 수정되지 않았습니다.");
 	}
 
 	/**
@@ -54,6 +59,19 @@ public class GoodsServiceImpl implements GoodsService {
 	@Override
 	public List<Goods> findGoods(Goods goods, PageCnt pageCnt) throws SQLException {
 		return goodsDao.findGoods(goods, pageCnt);
+	}
+
+	/**
+	 * 상품 아이디로 상품 검색
+	 * @param: Long goodsId
+	 * @return: Goods
+	 * @throws NotExistException 
+	 * */
+	public Goods findGoodsByGoodsId(Long goodsId) throws SQLException, NotExistException {
+		Goods goods = goodsDao.findGoodsByGoodsId(goodsId);
+		if (goods == null) throw new NotExistException("상품 아이디에 해당하는 상품이 존재하지 않습니다.");
+		
+		return goods;
 	}
 
 }

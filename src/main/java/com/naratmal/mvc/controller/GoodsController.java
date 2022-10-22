@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
@@ -39,14 +40,33 @@ public class GoodsController {
 	public void insertGoodsForm() {}
 
 	@RequestMapping("admin/goods/insert-complete")
-	public void insertGoods(Goods goods, MultipartFile file, HttpSession session) throws SQLException, NotExistException, NotDBInputException, IllegalStateException, IOException {
-		System.out.println(file);
+	public String insertGoods(Goods goods, MultipartFile file, HttpSession session) throws SQLException, NotExistException, NotDBInputException, IllegalStateException, IOException {
 		if(file != null && file.getSize() > 0) {
 			File img = new File(session.getServletContext().getRealPath("resources/images/goods/") + file.getOriginalFilename());
 			file.transferTo(img);
 			goods.setGoodsThumbnail(file.getOriginalFilename());
 		}
 		goodsService.insertGoods(goods);
+		return "redirect:/admin/goods/list";
+	}
+
+	@RequestMapping("admin/goods/update/{goodsId}")
+	public String updateGoodsForm(@PathVariable Long goodsId, Model model) throws SQLException, NotExistException {
+		Goods goods = goodsService.findGoodsByGoodsId(goodsId);
+		model.addAttribute("goods", goods);
+		return "admin/goods/update";
+	}
+
+	@RequestMapping("admin/goods/update-complete")
+	public String updateGoods(Goods goods, MultipartFile file, HttpSession session) throws SQLException, NotExistException, NotDBInputException, IllegalStateException, IOException {
+		if(file != null && file.getSize() > 0) {
+			File img = new File(session.getServletContext().getRealPath("resources/images/goods/") + file.getOriginalFilename());
+			file.transferTo(img);
+			goods.setGoodsThumbnail(file.getOriginalFilename());
+		}
+		goodsService.updateGoods(goods);
+		
+		return "redirect:/admin/goods/update/" + goods.getGoodsId();
 	}
 	
 	@RequestMapping("admin/goods/list")
