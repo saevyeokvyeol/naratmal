@@ -68,16 +68,19 @@ public class UserController {
 	}
 	
 	@RequestMapping("admin/user/list")
-	public void findUsers(Users users, @RequestParam(defaultValue = "1") int page, Model model) throws SQLException {		
+	public void findUsers(Users users, @RequestParam(defaultValue = "1") int page, Model model) throws SQLException {
 		List<Users> userList = userService.findUsers(users, new PageCnt(page));
 		model.addAttribute("userList", userList);
 		
 		int temp = (page - 1) % PageCnt.blockCount;
 		int startPage = page - temp;
+		int totalPage = PageCnt.totalCount / 10;
+		totalPage += PageCnt.totalCount % 10 > 0 ? 1 : 0;
 		
 		model.addAttribute("blockCount", PageCnt.blockCount);
 		model.addAttribute("startPage", startPage);
 		model.addAttribute("page", page);
+		model.addAttribute("totalPage", totalPage);
 	}
 
 	@ExceptionHandler(Exception.class) // Controller에서 입력한 Exception 발생 시 이동
@@ -86,6 +89,6 @@ public class UserController {
 		modelAndView.addObject("exception", e);
 		e.printStackTrace();
 		
-		return modelAndView;
+		return modelAndView; 
 	}
 }

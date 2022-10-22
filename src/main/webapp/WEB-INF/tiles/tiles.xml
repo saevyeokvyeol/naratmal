@@ -7,9 +7,15 @@
 		<put-attribute name="main-header" value="/WEB-INF/tiles/main-header.jsp"/>
 		<put-attribute name="main-footer" value="/WEB-INF/tiles/main-footer.jsp"/>
 	</definition>
+	<definition name="admin-layout" template="/WEB-INF/tiles/admin-layout.jsp">
+		<put-attribute name="admin-header" value="/WEB-INF/tiles/admin-header.jsp"/>
+	</definition>
 	
 	<!-- Controller에서 return하는 뷰의 정보에 따라 화면 구성 처리 -->
 	<definition name="main/**" extends="main-layout">
 		<put-attribute name="main-content" value="/WEB-INF/views/main/{1}.jsp"/>
+	</definition>
+	<definition name="admin/**" extends="admin-layout">
+		<put-attribute name="admin-content" value="/WEB-INF/views/admin/{1}.jsp"/>
 	</definition>
 </tiles-definitions>

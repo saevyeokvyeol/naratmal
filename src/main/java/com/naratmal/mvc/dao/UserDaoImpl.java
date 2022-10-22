@@ -60,16 +60,30 @@ public class UserDaoImpl implements UserDao {
 
 	/**
 	 * 회원 검색
-	 * @param: Users(userId, userName, userTel, userBirth, addr, userQuit 중 입력된 값에 따라 동적으로 검색)
+	 * @param: Users(userId, userName, userTel, userBirth, addr 중 입력된 값에 따라 동적으로 검색)
 	 * 		   Page(null이냐 아니냐에 따라서 동적으로 페이징 처리)
 	 * @return: List<Users>
 	 * */
 	@Override
 	public List<Users> findUsers(Users users, PageCnt pageCnt) throws SQLException {
+		PageCnt.totalCount = this.getTotalCount(users);
+		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("users", users);
-		map.put("pageCnt", pageCnt);
+		
+		int start = (pageCnt.getPageNum() - 1) * pageCnt.pageSize + 1;
+		int end = pageCnt.getPageNum() * pageCnt.pageSize;
+		map.put("start", start);
+		map.put("end", end);
 		return sqlSession.selectList("userMapper.findUsers", map);
 	}
-
+	
+	/**
+	 * 페이징 처리를 위한 전체 레코드 수 가져오기
+	 * @param: Users(userId, userName, userTel, userBirth, addr 중 입력된 값에 따라 동적으로 검색)
+	 * @return: int(페이지 수)
+	 * */
+	private int getTotalCount(Users users) throws SQLException {
+		return sqlSession.selectOne("userMapper.getTotalCount");
+	}
 }

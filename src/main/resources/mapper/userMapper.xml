@@ -39,8 +39,9 @@
  	</select>
 
  	<select id="findUsers" parameterType="map" resultType="users">
- 		select *
- 		from users
+ 		select * from
+ 		(select u.*, ROWNUM rnum from
+ 		(select * from users
  		<trim prefix="where" prefixOverrides="and">
  			<if test="users.userId != null">
  				user_id = #{users.userId}
@@ -58,6 +59,28 @@
  				user_quit = #{users.userQuit}
  			</if>
  		</trim>
- 		order by user_insert_date
+ 		order by user_insert_date) u)
+ 		where rnum <![CDATA[>=]]> #{start} and rnum <![CDATA[<=]]> #{end}
+ 	</select>
+
+ 	<select id="getTotalCount" parameterType="users" resultType="integer">
+ 		select count(*) from users
+ 		<trim prefix="where" prefixOverrides="and">
+ 			<if test="userId != null">
+ 				user_id = #{userId}
+ 			</if>
+ 			<if test="userName != null">
+ 				user_name = #{userName}
+ 			</if>
+ 			<if test="userTel != null">
+ 				user_tel = #{userTel}
+ 			</if>
+ 			<if test="addr != null">
+ 				addr = #{addr}
+ 			</if>
+ 			<if test="userQuit != null">
+ 				user_quit = #{userQuit}
+ 			</if>
+ 		</trim>
  	</select>
 </mapper>
