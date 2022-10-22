@@ -6,6 +6,7 @@ import java.util.List;
 import com.naratmal.mvc.exception.NotDBInputException;
 import com.naratmal.mvc.exception.NotExistException;
 import com.naratmal.mvc.vo.Goods;
+import com.naratmal.mvc.vo.PageCnt;
 
 public interface GoodsService {
 	/**
@@ -25,5 +26,5 @@ public interface GoodsService {
 	 * @param: Goods goods(상품 아이디, 상품 클래스 아이디, 상품 이름 중 입력한 컬럼)
 	 * @return: List<Goods>
 	 * */
-	List<Goods> findGoods(Goods goods) throws SQLException;
+	List<Goods> findGoods(Goods goods, PageCnt pageCnt) throws SQLException;
 }

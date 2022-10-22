@@ -1,12 +1,16 @@
 package com.naratmal.mvc.dao;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Component;
 
 import com.naratmal.mvc.vo.Goods;
+import com.naratmal.mvc.vo.PageCnt;
+import com.naratmal.mvc.vo.Users;
 
 import lombok.RequiredArgsConstructor;
 
@@ -42,9 +46,26 @@ public class GoodsDaoImpl implements GoodsDao {
 	 * @return: List<Goods>
 	 * */
 	@Override
-	public List<Goods> findGoods(Goods goods) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Goods> findGoods(Goods goods, PageCnt pageCnt) throws SQLException {
+		PageCnt.totalCount = this.getTotalCount(goods);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("goods", goods);
+		
+		int start = (pageCnt.getPageNum() - 1) * pageCnt.pageSize + 1;
+		int end = pageCnt.getPageNum() * pageCnt.pageSize;
+		map.put("start", start);
+		map.put("end", end);
+		return sqlSession.selectList("goodsMapper.findGoods", map);
+	}
+	
+	/**
+	 * 페이징 처리를 위한 전체 레코드 수 가져오기
+	 * @param: Goods goods(상품 아이디, 상품 클래스 아이디, 상품 이름, 상품 상태 아이디 중 입력한 컬럼)
+	 * @return: int(페이지 수)
+	 * */
+	private int getTotalCount(Goods goods) throws SQLException {
+		return sqlSession.selectOne("goodsMapper.getTotalCount");
 	}
 
 }

@@ -1,6 +1,5 @@
 package com.naratmal.mvc.vo;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 import lombok.Builder;

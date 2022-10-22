@@ -1,6 +1,6 @@
 package com.naratmal.mvc.vo;
 
-import java.time.LocalDateTime;
+import java.sql.Timestamp;
 import java.util.List;
 
 import lombok.Builder;
@@ -19,8 +19,8 @@ public class Goods {
 	private String goodsDetail;
 	private String goodsThumbnail;
 	private int goodsPrice;
-	private LocalDateTime goodsInsertDate;
-	private LocalDateTime goodsUpdateDate;
+	private Timestamp goodsInsertDate;
+	private Timestamp goodsUpdateDate;
 	
 	private List<OrderLine> orderLines;
 	private List<Cart> carts;
@@ -31,7 +31,7 @@ public class Goods {
 
 	@Builder
 	public Goods(Long goodsId, Long goodsClassId, Long goodsStateId, String goodsName, String goodsDetail,
-			String goodsThumbnail, int goodsPrice, LocalDateTime goodsInsertDate, LocalDateTime goodsUpdateDate,
+			String goodsThumbnail, int goodsPrice, Timestamp goodsInsertDate, Timestamp goodsUpdateDate,
 			List<OrderLine> orderLines, List<Cart> carts, List<Review> reviews, GoodsClass goodsClass,
 			GoodsState goodsState) {
 		super();

@@ -70,7 +70,7 @@ public class UserController {
 	@RequestMapping("admin/user/list")
 	public void findUsers(Users users, @RequestParam(defaultValue = "1") int page, Model model) throws SQLException {
 		List<Users> userList = userService.findUsers(users, new PageCnt(page));
-		model.addAttribute("userList", userList);
+		model.addAttribute("list", userList);
 		
 		int temp = (page - 1) % PageCnt.blockCount;
 		int startPage = page - temp;

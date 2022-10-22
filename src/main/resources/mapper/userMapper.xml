@@ -55,7 +55,7 @@
  			<if test="users.addr != null">
  				addr = #{users.addr}
  			</if>
- 			<if test="userQuit != null">
+ 			<if test="users.userQuit != null">
  				user_quit = #{users.userQuit}
  			</if>
  		</trim>
@@ -70,16 +70,16 @@
  				user_id = #{userId}
  			</if>
  			<if test="userName != null">
- 				user_name = #{userName}
+ 				and user_name = #{userName}
  			</if>
  			<if test="userTel != null">
- 				user_tel = #{userTel}
+ 				and user_tel = #{userTel}
  			</if>
  			<if test="addr != null">
- 				addr = #{addr}
+ 				and addr = #{addr}
  			</if>
  			<if test="userQuit != null">
- 				user_quit = #{userQuit}
+ 				and user_quit = #{userQuit}
  			</if>
  		</trim>
  	</select>

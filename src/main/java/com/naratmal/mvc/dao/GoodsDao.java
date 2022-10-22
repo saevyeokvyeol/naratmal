@@ -4,6 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.naratmal.mvc.vo.Goods;
+import com.naratmal.mvc.vo.PageCnt;
 
 public interface GoodsDao {
 	/**
@@ -25,5 +26,5 @@ public interface GoodsDao {
 	 * @param: Goods goods(상품 아이디, 상품 클래스 아이디, 상품 이름, 상품 상태 아이디 중 입력한 컬럼)
 	 * @return: List<Goods>
 	 * */
-	List<Goods> findGoods(Goods goods) throws SQLException;
+	List<Goods> findGoods(Goods goods, PageCnt pageCnt) throws SQLException;
 }

@@ -1,7 +1,6 @@
 package com.naratmal.mvc.vo;
 
-import java.time.LocalDateTime;
-import java.util.List;
+import java.security.Timestamp;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -18,8 +17,8 @@ public class OrderLine {
 	private int orderLineQty;
 	private int priceQty;
 	private String orderLineCanceled;
-	private LocalDateTime orderLineInsertDate;
-	private LocalDateTime orderLineUpdateDate;
+	private Timestamp orderLineInsertDate;
+	private Timestamp orderLineUpdateDate;
 	
 	private Orders orders;
 	private Goods goods;
@@ -27,7 +26,7 @@ public class OrderLine {
 	
 	@Builder
 	public OrderLine(Long orderLineId, Long orderId, Long goodsId, int orderLineQty, int priceQty,
-			String orderLineCanceled, LocalDateTime orderLineInsertDate, LocalDateTime orderLineUpdateDate,
+			String orderLineCanceled, Timestamp orderLineInsertDate, Timestamp orderLineUpdateDate,
 			Orders orders, Goods goods, Review review) {
 		super();
 		this.orderLineId = orderLineId;

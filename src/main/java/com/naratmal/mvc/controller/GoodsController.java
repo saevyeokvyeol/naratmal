@@ -9,8 +9,10 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -22,6 +24,8 @@ import com.naratmal.mvc.service.GoodsClassService;
 import com.naratmal.mvc.service.GoodsService;
 import com.naratmal.mvc.vo.Goods;
 import com.naratmal.mvc.vo.GoodsClass;
+import com.naratmal.mvc.vo.PageCnt;
+import com.naratmal.mvc.vo.Users;
 
 import lombok.RequiredArgsConstructor;
 
@@ -43,6 +47,22 @@ public class GoodsController {
 			goods.setGoodsThumbnail(file.getOriginalFilename());
 		}
 		goodsService.insertGoods(goods);
+	}
+	
+	@RequestMapping("admin/goods/list")
+	public void goodsList(Goods goods, @RequestParam(defaultValue = "1") int page, Model model) throws SQLException {
+		List<Goods> goodsList = goodsService.findGoods(goods, new PageCnt(page));
+		model.addAttribute("list", goodsList);
+		
+		int temp = (page - 1) % PageCnt.blockCount;
+		int startPage = page - temp;
+		int totalPage = PageCnt.totalCount / 10;
+		totalPage += PageCnt.totalCount % 10 > 0 ? 1 : 0;
+		
+		model.addAttribute("blockCount", PageCnt.blockCount);
+		model.addAttribute("startPage", startPage);
+		model.addAttribute("page", page);
+		model.addAttribute("totalPage", totalPage);
 	}
 	
 	@RequestMapping("goods/selectClassAll")

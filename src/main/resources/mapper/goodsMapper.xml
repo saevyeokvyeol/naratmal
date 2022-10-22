@@ -1,10 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="goodsMapper">
+	<resultMap type="goods" id="goodsMap">
+		<id column="goods_id" property="goodsId"/>
+		<result column="goods_class_id" property="goodsClassId"/>
+		<result column="goods_state_id" property="goodsStateId"/>
+		<result column="goods_name" property="goodsName"/>
+		<result column="goods_detail" property="goodsDetail"/>
+		<result column="goods_thumbnail" property="goodsThumbnail"/>
+		<result column="goods_price" property="goodsPrice"/>
+		<result column="goods_insert_date" property="goodsInsertDate"/>
+		<result column="goods_update_date" property="goodsUpdateDate"/>
+		
+		<association  property="goodsState" javaType="goodsState">
+			<id column="goods_state_id" property="goodsStateId"/>
+			<result column="goods_state_name" property="goodsStateName"/>
+		</association>
+		
+		<association property="goodsClass" javaType="goodsClass">
+			<id column="goods_class_id" property="goodsClassId"/>
+			<result column="goods_class_name" property="goodsClassName"/>
+		</association>
+	</resultMap>
+
+
 	<insert id="insertGoods" parameterType="goods">
 		insert into goods
 		values(goods_id_seq.nextval, #{goodsClassId}, 1, #{goodsName}, #{goodsDetail}, #{goodsThumbnail}, #{goodsPrice}, systimestamp, systimestamp)
 	</insert>
+	
+	<select id="findGoods" parameterType="map" resultMap="goodsMap">
+ 		select * from
+ 		(select go.*, ROWNUM rnum from
+		(select g.*, gc.goods_class_name, gs.goods_state_name
+		from goods g inner join goods_class gc
+		on g.goods_class_id = gc.goods_class_id
+		join goods_state gs
+		on g.goods_state_id = gs.goods_state_id
+ 		<trim prefix="where" prefixOverrides="and">
+ 			<if test="goods.goodsId != null">
+ 				goodsId = #{goods.goodsId}
+ 			</if>
+ 			<if test="goods.goodsClassId != null">
+ 				and goods_class_id = #{goods.goodsClassId}
+ 			</if>
+ 			<if test="goods.goodsName != null">
+ 				and goods_name = #{goods.goodsName}
+ 			</if>
+ 			<if test="goods.goodsStateId != null">
+ 				and goods_state_id = #{goods.goodsStateId}
+ 			</if>
+ 		</trim>
+		order by goods_id) go)
+ 		where rnum <![CDATA[>=]]> #{start} and rnum <![CDATA[<=]]> #{end}
+	</select>
 	
 	<select id="findAllGoodsClass" resultType="goodsClass">
 		select * from goods_class
@@ -13,5 +62,23 @@
 	<select id="findGoodsClass" parameterType="long" resultType="goodsClass">
 		select * from goods_class where goods_class_id = #{_parameter}
 	</select>
+
+ 	<select id="getTotalCount" parameterType="goods" resultType="integer">
+ 		select count(*) from goods
+ 		<trim prefix="where" prefixOverrides="and">
+ 			<if test="goodsId != null">
+ 				goodsId = #{goodsId}
+ 			</if>
+ 			<if test="goodsClassId != null">
+ 				and goods_class_id = #{goodsClassId}
+ 			</if>
+ 			<if test="goodsName != null">
+ 				and goods_name = #{goodsName}
+ 			</if>
+ 			<if test="goodsStateId != null">
+ 				and goods_state_id = #{goodsStateId}
+ 			</if>
+ 		</trim>
+ 	</select>
 	
 </mapper>
