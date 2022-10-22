@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd"> 
+
+<configuration>
+	<settings>
+		<!-- #{ename}에 값이 없을 때 null값으로 들어가는 설정 -->
+		<setting name="jdbcTypeForNull" value="NULL"/>
+		
+		<!-- 스네이크 케이스를 카멜 케이스로 변경해 매핑 -->
+		<setting name="mapUnderscoreToCamelCase" value="true"/>
+	</settings>
+</configuration>

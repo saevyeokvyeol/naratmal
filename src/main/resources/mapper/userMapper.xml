@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="userMapper">
+ 	<insert id="insertUser" parameterType="users">
+ 		insert
+ 		into users
+ 		values(#{userId}, #{userName}, #{userPassword}, #{userTel}, #{zipcode}, #{addr}, #{addrDetail}, 'F', systimestamp, systimestamp)
+ 	</insert>
+ 	
+ 	<select id="login" parameterType="users" resultType="users">
+ 		select *
+ 		from users
+ 		where user_id = #{userId} and user_password = #{userPassword}
+ 	</select>
+ 	
+ 	<update id="updateUser" parameterType="users">
+ 		update users
+ 		<trim prefix="set" prefixOverrides=", " suffix=", user_update_date = systimestamp">
+ 			<if test="userTel != null">
+ 				user_tel = #{userTel}
+ 			</if>
+ 			<if test="zipcode != null">
+ 				, zipcode = #{zipcode}
+ 			</if>
+ 			<if test="addr != null">
+ 				, addr = #{addr}
+ 			</if>
+ 			<if test="addrDetail != null">
+ 				, addr_detail = #{addrDetail}
+ 			</if>
+ 		</trim>
+ 		where user_id = #{userId}
+ 	</update>
+
+ 	<select id="findById" parameterType="string" resultType="users">
+ 		select *
+ 		from users
+ 		where user_id = #{_parameter}
+ 	</select>
+
+ 	<select id="findUsers" parameterType="map" resultType="users">
+ 		select *
+ 		from users
+ 		<trim prefix="where" prefixOverrides="and">
+ 			<if test="users.userId != null">
+ 				user_id = #{users.userId}
+ 			</if>
+ 			<if test="users.userName != null">
+ 				user_name = #{users.userName}
+ 			</if>
+ 			<if test="users.userTel != null">
+ 				user_tel = #{users.userTel}
+ 			</if>
+ 			<if test="users.addr != null">
+ 				addr = #{users.addr}
+ 			</if>
+ 			<if test="userQuit != null">
+ 				user_quit = #{users.userQuit}
+ 			</if>
+ 		</trim>
+ 		order by user_insert_date
+ 	</select>
+</mapper>

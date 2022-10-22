@@ -50,17 +50,14 @@ public class PersistenceConfig implements TransactionManagementConfigurer {
 		// DataSource 등록
 		factoryBean.setDataSource(getBasicDataSource());
 		
-		/**
-		 * PropertySourcesPlaceholderConfigurer 등록
-		 * 프로퍼티 파일을 가져오는 객체이기 때문에 다른 빈보다 더 먼저 실행되어야 함
-		 * 때문에 객체 생성 시 가장 먼저 실행되는 static 메소드로 제작
-		 * */
-		PathMatchingResourcePatternResolver patternResolver = new PathMatchingResourcePatternResolver();
-		Resource[] resources = patternResolver.getResources("classpath:mapper/*Mapper.xml");
-		factoryBean.setMapperLocations(resources);
+		// mapper 등록
+		factoryBean.setMapperLocations(new PathMatchingResourcePatternResolver().getResources("classpath:mapper/*Mapper.xml"));
 		
 		// 클래스 별칭 등록: yuda.mvc.dto 팩토리 안의 모든 클래스를 첫 글자를 소문자로 바꾼 클래스명으로
-		factoryBean.setTypeAliasesPackage("com.naratmal.mvc.dto");
+		factoryBean.setTypeAliasesPackage("com.naratmal.mvc.vo");
+		
+		// 마이바티스 설정파일 등록
+		factoryBean.setConfigLocation(new PathMatchingResourcePatternResolver().getResource("classpath:config/mybatis-config.xml"));
 		
 		return factoryBean;
 	}
