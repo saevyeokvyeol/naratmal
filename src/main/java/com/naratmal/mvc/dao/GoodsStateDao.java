@@ -7,9 +7,15 @@ import com.naratmal.mvc.vo.GoodsState;
 
 public interface GoodsStateDao {
 	/**
-	 * 상품 상태 검색
-	 * @param: Long goodsStateId(null이면 전체 검색, null이 아니면 해당 아이디 검색)
+	 * 전체 상품 상태 검색
 	 * @return: List<GoodsState>
 	 * */
-	List<GoodsState> findGoodsState(Long goodsStateId) throws SQLException;
+	List<GoodsState> findGoodsState() throws SQLException;
+	
+	/**
+	 * 상품 상태 아이디로 상품 상태 검색
+	 * @param: Long goodsStateId
+	 * @return: GoodsState
+	 * */
+	GoodsState findGoodsStateByGoodsStateId(Long goodsStateId) throws SQLException;
 }

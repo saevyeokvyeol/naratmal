@@ -34,7 +34,7 @@ public interface GoodsClassDao {
 	List<GoodsClass> findAllGoodsClass() throws SQLException;
 
 	/**
-	 * 상품 클래스 검색
+	 * 상품 클래스 아이디로 상품 클래스 검색
 	 * @param: Long goodsClassId
 	 * @return: GoodsClass
 	 * */
