@@ -1,12 +1,14 @@
 package com.naratmal.mvc.dao;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Component;
 
-import com.naratmal.mvc.vo.Page;
+import com.naratmal.mvc.vo.PageCnt;
 import com.naratmal.mvc.vo.Users;
 
 import lombok.RequiredArgsConstructor;
@@ -63,8 +65,11 @@ public class UserDaoImpl implements UserDao {
 	 * @return: List<Users>
 	 * */
 	@Override
-	public List<Users> findUsers(Users users, Page page) throws SQLException {
-		return sqlSession.selectList("userMapper.findUsers", users);
+	public List<Users> findUsers(Users users, PageCnt pageCnt) throws SQLException {
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("users", users);
+		map.put("pageCnt", pageCnt);
+		return sqlSession.selectList("userMapper.findUsers", map);
 	}
 
 }

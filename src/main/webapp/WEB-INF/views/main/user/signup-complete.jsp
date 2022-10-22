@@ -14,7 +14,7 @@
 	<body>
 		<div id="main-content-body">
 			<c:forEach items="${userList}" var="user">
-				${user}
+				${user}<br>
 			</c:forEach>
 		</div>
 	</body>

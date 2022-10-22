@@ -38,24 +38,24 @@
  		where user_id = #{_parameter}
  	</select>
 
- 	<select id="findUsers" parameterType="users" resultType="users">
+ 	<select id="findUsers" parameterType="map" resultType="users">
  		select *
  		from users
  		<trim prefix="where" prefixOverrides="and">
- 			<if test="userId != null">
- 				user_id = #{userId}
+ 			<if test="users.userId != null">
+ 				user_id = #{users.userId}
  			</if>
- 			<if test="userName != null">
- 				user_name = #{userName}
+ 			<if test="users.userName != null">
+ 				user_name = #{users.userName}
  			</if>
- 			<if test="userTel != null">
- 				user_tel = #{userTel}
+ 			<if test="users.userTel != null">
+ 				user_tel = #{users.userTel}
  			</if>
- 			<if test="addr != null">
- 				addr = #{addr}
+ 			<if test="users.addr != null">
+ 				addr = #{users.addr}
  			</if>
  			<if test="userQuit != null">
- 				user_quit = #{userQuit}
+ 				user_quit = #{users.userQuit}
  			</if>
  		</trim>
  		order by user_insert_date

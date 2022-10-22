@@ -3,7 +3,7 @@ package com.naratmal.mvc.dao;
 import java.sql.SQLException;
 import java.util.List;
 
-import com.naratmal.mvc.vo.Page;
+import com.naratmal.mvc.vo.PageCnt;
 import com.naratmal.mvc.vo.Users;
 
 public interface UserDao {
@@ -41,5 +41,5 @@ public interface UserDao {
 	 * 			Page(null이냐 아니냐에 따라서 동적으로 페이징 처리)
 	 * @return: List<Users>
 	 * */
-	List<Users> findUsers(Users users, Page page) throws SQLException;
+	List<Users> findUsers(Users users, PageCnt pageCnt) throws SQLException;
 }

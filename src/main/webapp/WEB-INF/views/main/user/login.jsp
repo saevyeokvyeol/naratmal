@@ -22,7 +22,7 @@
 					<label for="floatingPassword">비밀번호</label>
 				</div>
 				<input type="submit" class="btn btn-dark" value="로그인">
-				<a href="${path}/main/signup" class="btn btn-dark">회원가입</a>
+				<a href="${path}/main/user/signup" class="btn btn-dark">회원가입</a>
 			</form>
 		</div>
 	</body>

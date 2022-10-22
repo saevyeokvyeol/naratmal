@@ -11,7 +11,7 @@ import com.naratmal.mvc.exception.DuplicatedException;
 import com.naratmal.mvc.exception.NotDBInputException;
 import com.naratmal.mvc.exception.NotExistException;
 import com.naratmal.mvc.exception.NotLoginException;
-import com.naratmal.mvc.vo.Page;
+import com.naratmal.mvc.vo.PageCnt;
 import com.naratmal.mvc.vo.Users;
 
 import lombok.RequiredArgsConstructor;
@@ -90,7 +90,7 @@ public class UserServiceImpl implements UserService {
 	 * @return: List<Users>
 	 * */
 	@Override
-	public List<Users> findUsers(Users users, Page page) throws SQLException {
-		return userDao.findUsers(users, page);
+	public List<Users> findUsers(Users users, PageCnt pageCnt) throws SQLException {
+		return userDao.findUsers(users, pageCnt);
 	}
 }

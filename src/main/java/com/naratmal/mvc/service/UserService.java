@@ -7,7 +7,7 @@ import com.naratmal.mvc.exception.DuplicatedException;
 import com.naratmal.mvc.exception.NotDBInputException;
 import com.naratmal.mvc.exception.NotExistException;
 import com.naratmal.mvc.exception.NotLoginException;
-import com.naratmal.mvc.vo.Page;
+import com.naratmal.mvc.vo.PageCnt;
 import com.naratmal.mvc.vo.Users;
 
 public interface UserService {
@@ -44,5 +44,5 @@ public interface UserService {
 	 * 			Page(null이냐 아니냐에 따라서 동적으로 페이징 처리)
 	 * @return: List<Users>
 	 * */
-	List<Users> findUsers(Users users, Page page) throws SQLException;
+	List<Users> findUsers(Users users, PageCnt pageCnt) throws SQLException;
 }
