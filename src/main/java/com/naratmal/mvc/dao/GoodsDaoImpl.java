@@ -10,7 +10,6 @@ import org.springframework.stereotype.Component;
 
 import com.naratmal.mvc.vo.Goods;
 import com.naratmal.mvc.vo.PageCnt;
-import com.naratmal.mvc.vo.Users;
 
 import lombok.RequiredArgsConstructor;
 

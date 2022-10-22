@@ -34,11 +34,4 @@ public interface GoodsClassService {
 	 * @return: List<GoodsClass>
 	 * */
 	List<GoodsClass> findAllGoodsClass() throws SQLException;
-
-	/**
-	 * 상품 클래스 검색
-	 * @param: Long goodsClassId
-	 * @return: GoodsClass
-	 * */
-	GoodsClass findGoodsClass(Long goodsClassId) throws SQLException, NotExistException;
 }

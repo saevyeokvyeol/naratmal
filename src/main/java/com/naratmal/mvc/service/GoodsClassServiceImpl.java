@@ -62,15 +62,4 @@ public class GoodsClassServiceImpl implements GoodsClassService {
 		return goodsClassDao.findAllGoodsClass();
 	}
 
-	/**
-	 * 상품 클래스 검색
-	 * @param: Long goodsClassId
-	 * @return: GoodsClass
-	 * */
-	@Override
-	public GoodsClass findGoodsClass(Long goodsClassId) throws SQLException, NotExistException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }

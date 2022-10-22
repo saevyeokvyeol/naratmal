@@ -8,13 +8,11 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -26,7 +24,6 @@ import com.naratmal.mvc.service.GoodsService;
 import com.naratmal.mvc.vo.Goods;
 import com.naratmal.mvc.vo.GoodsClass;
 import com.naratmal.mvc.vo.PageCnt;
-import com.naratmal.mvc.vo.Users;
 
 import lombok.RequiredArgsConstructor;
 
