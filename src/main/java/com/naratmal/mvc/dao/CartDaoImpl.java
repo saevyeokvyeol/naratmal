@@ -32,8 +32,7 @@ public class CartDaoImpl implements CartDao {
 	 * */
 	@Override
 	public int updateCart(Cart cart) throws SQLException {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.delete("cartMapper.updateCart", cart);
 	}
 
 	/**
@@ -43,8 +42,7 @@ public class CartDaoImpl implements CartDao {
 	 * */
 	@Override
 	public int deleteCart(Cart cart) throws SQLException {
-		// TODO Auto-generated method stub
-		return 0;
+		return sqlSession.delete("cartMapper.deleteCart", cart); 
 	}
 
 	/**

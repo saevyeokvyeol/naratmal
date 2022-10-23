@@ -46,8 +46,8 @@ public class CartServiceImpl implements CartService {
 	 * */
 	@Override
 	public void deleteCart(Cart cart) throws SQLException, NotLoginException, NotExistException {
-		// TODO Auto-generated method stub
-
+		int result = cartDao.deleteCart(cart);
+		if (result != 1) throw new SQLException("장바구니 삭제에 실패했습니다.");
 	}
 
 	/**

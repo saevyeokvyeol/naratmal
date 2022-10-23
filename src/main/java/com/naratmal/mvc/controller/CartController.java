@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -30,6 +31,13 @@ public class CartController {
 	@ResponseBody
 	public void insertCart(Cart cart) throws SQLException, NotLoginException, NotExistException, DuplicatedException {
 		cartService.insertCart(cart);
+	}
+	
+	@RequestMapping("cart/delete/{cartId}")
+	@ResponseBody
+	public void deleteCart(@PathVariable Long cartId) throws SQLException, NotLoginException, NotExistException, DuplicatedException {
+		Cart cart = Cart.builder().cartId(cartId).build();
+		cartService.deleteCart(cart);
 	}
 	
 	@RequestMapping("main/cart/list")

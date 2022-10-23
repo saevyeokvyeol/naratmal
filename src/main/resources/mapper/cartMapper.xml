@@ -53,6 +53,18 @@
 		where goods_id = #{goodsId}
 	</update>
 	
+	<delete id="deleteCart" parameterType="cart">
+		delete cart
+		<trim prefix="where" prefixOverrides="and ">
+			<if test="userId != null">
+				user_id = #{userId}
+			</if>
+			<if test="cartId != null">
+				and cart_id = #{cartId}
+			</if>
+		</trim>
+	</delete>
+	
 	<select id="findCart" parameterType="cart" resultMap="cartMap">
 		select g.*, c.cart_id, c.cart_qty, c.user_id, c.cart_insert_date, c.cart_update_date
 		from cart c join goods g on c.goods_id = g.goods_id
