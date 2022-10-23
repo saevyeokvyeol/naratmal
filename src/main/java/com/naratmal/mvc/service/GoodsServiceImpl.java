@@ -12,7 +12,7 @@ import com.naratmal.mvc.exception.NotDBInputException;
 import com.naratmal.mvc.exception.NotExistException;
 import com.naratmal.mvc.vo.Goods;
 import com.naratmal.mvc.vo.GoodsClass;
-import com.naratmal.mvc.vo.PageCnt;
+import com.naratmal.mvc.vo.Paging;
 
 import lombok.RequiredArgsConstructor;
 
@@ -57,7 +57,7 @@ public class GoodsServiceImpl implements GoodsService {
 	 * @return: List<Goods>
 	 * */
 	@Override
-	public List<Goods> findGoods(Goods goods, PageCnt pageCnt) throws SQLException {
+	public List<Goods> findGoods(Goods goods, Paging pageCnt) throws SQLException {
 		return goodsDao.findGoods(goods, pageCnt);
 	}
 

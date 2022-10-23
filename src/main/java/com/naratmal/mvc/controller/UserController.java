@@ -18,7 +18,7 @@ import com.naratmal.mvc.exception.NotDBInputException;
 import com.naratmal.mvc.exception.NotExistException;
 import com.naratmal.mvc.exception.NotLoginException;
 import com.naratmal.mvc.service.UserService;
-import com.naratmal.mvc.vo.PageCnt;
+import com.naratmal.mvc.vo.Paging;
 import com.naratmal.mvc.vo.Users;
 
 import lombok.RequiredArgsConstructor;
@@ -69,15 +69,15 @@ public class UserController {
 	
 	@RequestMapping("admin/user/list")
 	public void findUsers(Users users, @RequestParam(defaultValue = "1") int page, Model model) throws SQLException {
-		List<Users> userList = userService.findUsers(users, new PageCnt(page));
+		List<Users> userList = userService.findUsers(users, new Paging(page));
 		model.addAttribute("list", userList);
 		
-		int temp = (page - 1) % PageCnt.blockCount;
+		int temp = (page - 1) % Paging.blockCount;
 		int startPage = page - temp;
-		int totalPage = PageCnt.totalCount / 10;
-		totalPage += PageCnt.totalCount % 10 > 0 ? 1 : 0;
+		int totalPage = Paging.totalCount / 10;
+		totalPage += Paging.totalCount % 10 > 0 ? 1 : 0;
 		
-		model.addAttribute("blockCount", PageCnt.blockCount);
+		model.addAttribute("blockCount", Paging.blockCount);
 		model.addAttribute("startPage", startPage);
 		model.addAttribute("page", page);
 		model.addAttribute("totalPage", totalPage);

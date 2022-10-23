@@ -9,7 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Component;
 
 import com.naratmal.mvc.vo.Goods;
-import com.naratmal.mvc.vo.PageCnt;
+import com.naratmal.mvc.vo.Paging;
 
 import lombok.RequiredArgsConstructor;
 
@@ -44,8 +44,8 @@ public class GoodsDaoImpl implements GoodsDao {
 	 * @return: List<Goods>
 	 * */
 	@Override
-	public List<Goods> findGoods(Goods goods, PageCnt pageCnt) throws SQLException {
-		PageCnt.totalCount = this.getTotalCount(goods);
+	public List<Goods> findGoods(Goods goods, Paging pageCnt) throws SQLException {
+		Paging.totalCount = this.getTotalCount(goods);
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("goods", goods);

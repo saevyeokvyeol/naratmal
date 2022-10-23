@@ -8,7 +8,7 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Component;
 
-import com.naratmal.mvc.vo.PageCnt;
+import com.naratmal.mvc.vo.Paging;
 import com.naratmal.mvc.vo.Users;
 
 import lombok.RequiredArgsConstructor;
@@ -65,8 +65,8 @@ public class UserDaoImpl implements UserDao {
 	 * @return: List<Users>
 	 * */
 	@Override
-	public List<Users> findUsers(Users users, PageCnt pageCnt) throws SQLException {
-		PageCnt.totalCount = this.getTotalCount(users);
+	public List<Users> findUsers(Users users, Paging pageCnt) throws SQLException {
+		Paging.totalCount = this.getTotalCount(users);
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("users", users);

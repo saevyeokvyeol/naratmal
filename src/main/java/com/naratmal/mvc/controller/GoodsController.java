@@ -23,7 +23,7 @@ import com.naratmal.mvc.service.GoodsClassService;
 import com.naratmal.mvc.service.GoodsService;
 import com.naratmal.mvc.vo.Goods;
 import com.naratmal.mvc.vo.GoodsClass;
-import com.naratmal.mvc.vo.PageCnt;
+import com.naratmal.mvc.vo.Paging;
 
 import lombok.RequiredArgsConstructor;
 
@@ -66,17 +66,40 @@ public class GoodsController {
 		return "redirect:/admin/goods/update/" + goods.getGoodsId();
 	}
 	
-	@RequestMapping("admin/goods/list")
-	public void goodsList(Goods goods, @RequestParam(defaultValue = "1") int page, Model model) throws SQLException {
-		List<Goods> goodsList = goodsService.findGoods(goods, new PageCnt(page));
+	@RequestMapping("main/goods/list")
+	public void mainGoodsList(Goods goods, @RequestParam(defaultValue = "1") int page, Model model) throws SQLException {
+		List<Goods> goodsList = goodsService.findGoods(goods, new Paging(page));
 		model.addAttribute("list", goodsList);
 		
-		int temp = (page - 1) % PageCnt.blockCount;
+		int temp = (page - 1) % Paging.blockCount;
 		int startPage = page - temp;
-		int totalPage = PageCnt.totalCount / 10;
-		totalPage += PageCnt.totalCount % 10 > 0 ? 1 : 0;
+		int totalPage = Paging.totalCount / 10;
+		totalPage += Paging.totalCount % 10 > 0 ? 1 : 0;
 		
-		model.addAttribute("blockCount", PageCnt.blockCount);
+		model.addAttribute("blockCount", Paging.blockCount);
+		model.addAttribute("startPage", startPage);
+		model.addAttribute("page", page);
+		model.addAttribute("totalPage", totalPage);
+	}
+	
+	@RequestMapping("main/goods/{goodsId}")
+	public String mainGoodsList(@PathVariable Long goodsId, Model model) throws SQLException, NotExistException {
+		Goods goods = goodsService.findGoodsByGoodsId(goodsId);
+		model.addAttribute("goods", goods);
+		return "main/goods/detail";
+	}
+	
+	@RequestMapping("admin/goods/list")
+	public void adminGoodsList(Goods goods, @RequestParam(defaultValue = "1") int page, Model model) throws SQLException {
+		List<Goods> goodsList = goodsService.findGoods(goods, new Paging(page));
+		model.addAttribute("list", goodsList);
+		
+		int temp = (page - 1) % Paging.blockCount;
+		int startPage = page - temp;
+		int totalPage = Paging.totalCount / 10;
+		totalPage += Paging.totalCount % 10 > 0 ? 1 : 0;
+		
+		model.addAttribute("blockCount", Paging.blockCount);
 		model.addAttribute("startPage", startPage);
 		model.addAttribute("page", page);
 		model.addAttribute("totalPage", totalPage);

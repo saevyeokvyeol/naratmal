@@ -57,7 +57,7 @@
 				<label for="floatingPrice">가격</label>
 			</div>
 			<div class="mb-3">
-				<input class="form-control" type="file" id="formFile" name="file" value="${goods.goodsThumbnail}">
+				<input class="form-control" type="file" id="formFile" name="file">
 			</div>
 			
 			<input type="submit" class="btn btn-dark" value="상품 수정">

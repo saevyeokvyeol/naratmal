@@ -5,17 +5,17 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class PageCnt {
+public class Paging {
 	private int pageNum;
-	public static int pageSize = 10;
+	public static int pageSize = 15;
 	public static int blockCount = 5;
 	public static int totalCount = 0;
 	
-	public PageCnt() {
+	public Paging() {
 		super();
 	}
 
-	public PageCnt(int pageNum) {
+	public Paging(int pageNum) {
 		super();
 		this.pageNum = pageNum;
 	}

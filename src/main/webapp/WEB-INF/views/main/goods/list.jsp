@@ -24,7 +24,7 @@
 				<tr>
 					<td>${goods.goodsId}</td>
 					<td>${goods.goodsClass.goodsClassName}</td>
-					<td><img src="${path}/resources/images/goods/${goods.goodsThumbnail}"> <a href="${path}/admin/goods/update/${goods.goodsId}">${goods.goodsName}</a></td>
+					<td><img src="${path}/resources/images/goods/${goods.goodsThumbnail}"><a href="${path}/main/goods/${goods.goodsId}">${goods.goodsName}</a></td>
 					<td>${goods.goodsPrice}</td>
 					<td>${goods.goodsState.goodsStateName}</td>
 				</tr>
