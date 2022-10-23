@@ -1,5 +1,6 @@
 package com.naratmal.mvc.vo;
 
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -16,15 +17,15 @@ public class Cart {
 	private int cartQty;
 	private String userId;
 	private Long goodsId;
-	private LocalDateTime cartInsertDate;
-	private LocalDateTime cartUpdateDate;
+	private Timestamp cartInsertDate;
+	private Timestamp cartUpdateDate;
 	
 	private Users users;
 	private Goods goods;
 
 	@Builder
-	public Cart(Long cartId, int cartQty, String userId, Long goodsId, LocalDateTime cartInsertDate,
-			LocalDateTime cartUpdateDate, Users users, Goods goods) {
+	public Cart(Long cartId, int cartQty, String userId, Long goodsId, Timestamp cartInsertDate,
+			Timestamp cartUpdateDate, Users users, Goods goods) {
 		super();
 		this.cartId = cartId;
 		this.cartQty = cartQty;

@@ -54,8 +54,7 @@ public class CartDaoImpl implements CartDao {
 	 * */
 	@Override
 	public List<Cart> findCart(Cart cart) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+		return sqlSession.selectList("cartMapper.findCart", cart);
 	}
 
 }

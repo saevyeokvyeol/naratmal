@@ -57,8 +57,7 @@ public class CartServiceImpl implements CartService {
 	 * */
 	@Override
 	public List<Cart> findCart(Cart cart) throws SQLException, NotLoginException {
-		// TODO Auto-generated method stub
-		return null;
+		return cartDao.findCart(cart);
 	}
 
 }

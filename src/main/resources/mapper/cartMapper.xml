@@ -3,8 +3,8 @@
 <mapper namespace="cartMapper">
 	<resultMap type="cart" id="cartMap">
 		<id column="cart_id" property="cartId"/>
-		<result column="cartQty" property="cartQty"/>
-		<result column="userId" property="userId"/>
+		<result column="cart_Qty" property="cartQty"/>
+		<result column="user_Id" property="userId"/>
 		<result column="goods_id" property="goodsId"/>
 		<result column="cart_Insert_Date" property="cartInsertDate"/>
 		<result column="cart_Update_Date" property="cartUpdateDate"/>
@@ -52,5 +52,22 @@
 		</trim>
 		where goods_id = #{goodsId}
 	</update>
+	
+	<select id="findCart" parameterType="cart" resultMap="cartMap">
+		select g.*, c.cart_id, c.cart_qty, c.user_id, c.cart_insert_date, c.cart_update_date
+		from cart c join goods g on c.goods_id = g.goods_id
+		<trim prefix="where" prefixOverrides="and ">
+			<if test="cartId != null">
+				c.cart_id = #{cartId}
+			</if>
+			<if test="cartId != null">
+				and c.user_Id = #{userId}
+			</if>
+			<if test="cartId != null">
+				and g.goods_Id = #{goodsId}
+			</if>
+		</trim>
+		order by c.cart_id desc
+	</select>
 	
 </mapper>
