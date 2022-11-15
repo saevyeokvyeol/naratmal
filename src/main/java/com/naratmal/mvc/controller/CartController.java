@@ -47,6 +47,12 @@ public class CartController {
 		List<Cart> carts = cartService.findCart(cart);
 		model.addAttribute("list", carts);
 	}
+	
+	@RequestMapping("main/cart/update")
+	@ResponseBody
+	public void cartListById(Cart cart) throws SQLException, NotLoginException, NotExistException {
+		cartService.updateCart(cart);
+	}
 
 	@ExceptionHandler(Exception.class) // Controller에서 입력한 Exception 발생 시 이동
 	public ModelAndView error(Exception e) { // 발생한 Exception 정보가 필요한 경우 인수로 입력하면 자동 삽입됨

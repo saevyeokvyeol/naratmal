@@ -32,38 +32,47 @@ CREATE TABLE users(
 	user_update_date	timestamp		DEFAULT SYSTIMESTAMP NOT NULL
 );
 
-insert into users values('yuda', '±èÀ¯´Ù', '0000', '01011112222', '03054', '¼­¿ï Á¾·Î±¸ Ã»¿Í´ë·Î 73', '00000', 'F', SYSTIMESTAMP, SYSTIMESTAMP);
-insert into users values('hyun', '±èÀ¯Çö', '0000', '01012341234', '06035', '¼­¿ï °­³²±¸ °¡·Î¼ö±æ 5', '156', 'F', SYSTIMESTAMP, SYSTIMESTAMP);
-insert into users values('test', 'Å×½ºÆ®', '0000', '01026262626', '26494', '°­¿ø ¿øÁÖ½Ã Èï¾÷¸é ºĞÁöµ¿±æ 27-8', '651-156', 'F', SYSTIMESTAMP, SYSTIMESTAMP);
-insert into users values('sion', 'ÀÌ½Ã¿Â', '0000', '01045674567', '25630', '°­¿ø °­¸ª½Ã °­µ¿¸é ¿ÀÀÌ¼ºÈ²±æ 1-2', '262', 'F', SYSTIMESTAMP, SYSTIMESTAMP);
-insert into users values('maca', '¸¶Ä«·Õ', '0000', '01091919191', '15880', '°æ±â ±ºÆ÷½Ã ±ºÆ÷Ã·´Ü»ê¾÷2·Î8¹ø±æ 1', '1468-1515', 'F', SYSTIMESTAMP, SYSTIMESTAMP);
-insert into users values('mina', '¹Ú¹Î¾Æ', '0000', '01099999999', '15888', '°æ±â ±ºÆ÷½Ã °Ç°Ç·Î 237-2', '1515È£', 'F', SYSTIMESTAMP, SYSTIMESTAMP);
-insert into users values('rumi', 'ÀÌ·ç¹Ì', '0000', '01011111111', '54028', 'ÀüºÏ ±º»ê½Ã ¹Ì¿ø·Î 109', '15µ¿ 156È£', 'F', SYSTIMESTAMP, SYSTIMESTAMP);
-insert into users values('aeri', 'Á¤¾Ö¸®', '0000', '01066666666', '63534', 'Á¦ÁÖÆ¯º°ÀÚÄ¡µµ ¼­±ÍÆ÷½Ã °¡°¡·Î 14', '156-156', 'F', SYSTIMESTAMP, SYSTIMESTAMP);
-insert into users values('eunh', '±èÀºÇÏ', '0000', '01045615665', '18148', '°æ±â ¿À»ê½Ã ºÎ»êÁß¾Ó·Î 11', '684', 'F', SYSTIMESTAMP, SYSTIMESTAMP);
-insert into users values('uzin', '¿ÀÀ¯Áø', '0000', '01084456469', '06232', '¼­¿ï °­³²±¸ °­³²´ë·Î 390', '', 'F', SYSTIMESTAMP, SYSTIMESTAMP);
-insert into users values('admin', '°ü¸®ÀÚ', '0000', '01000000000', '13536', '°æ±â ¼º³²½Ã ºĞ´ç±¸ ÆÇ±³¿ª·Î 4', '00000', 'F', SYSTIMESTAMP, SYSTIMESTAMP);
-insert into users values('blue', '±èÆÄ¶û', '0000', '01015615615', '31581', 'Ãæ³² ¾Æ»ê½Ã °íºÒ·Î 651-32', '156¹øÁö', 'F', SYSTIMESTAMP, SYSTIMESTAMP);
-insert into users values('redd', '±è»¡°­', '0000', '01059748412', '13473', '°æ±â ¼º³²½Ã ºĞ´ç±¸ °æºÎ°í¼Óµµ·Î 409', '394È£', 'F', SYSTIMESTAMP, SYSTIMESTAMP);
-insert into users values('domi', 'µµ¹Ì¼Ö', '0000', '01016164724', '13487', '°æ±â ¼º³²½Ã ºĞ´ç±¸ ´ë¿ÕÆÇ±³·Î 579', '1Ãş 2È£', 'F', SYSTIMESTAMP, SYSTIMESTAMP);
-insert into users values('dodo', '±èµµµµ', '0000', '01094513462', '11126', '°æ±â Æ÷Ãµ½Ã ¿µÁß¸é °¡¿µ·Î 553-66', '256', 'F', SYSTIMESTAMP, SYSTIMESTAMP);
-insert into users values('nara', 'ÇÑ³ª¶ó', '0000', '01065156219', '05291', '¼­¿ï °­µ¿±¸ ÃµÈ£´ë·Î213±æ 14', '456-156', 'F', SYSTIMESTAMP, SYSTIMESTAMP);
-insert into users values('kiki', '±èÅ°Å°', '0000', '01091573296', '26392', '°­¿ø ¿øÁÖ½Ã ´É¶óµ¿±æ 7', '614', 'F', SYSTIMESTAMP, SYSTIMESTAMP);
-insert into users values('toto', '±èÅäÅä', '0000', '01091465129', '24664', '°­¿ø ÀÎÁ¦±º »ó³²¸é ¼­¿ï¾ç¾ç°í¼Óµµ·Î 109', '2156¹øÁö', 'F', SYSTIMESTAMP, SYSTIMESTAMP);
-insert into users values('momo', 'ÀÌ¸ğ¸ğ', '0000', '01091436621', '06036', '¼­¿ï °­³²±¸ °¡·Î¼ö±æ 12', '1Ãş 56È£', 'F', SYSTIMESTAMP, SYSTIMESTAMP);
-insert into users values('jiji', 'ÀÌÁöÀº', '0000', '01019561556', '06034', '¼­¿ï °­³²±¸ °¡·Î¼ö±æ 31 (¼±ºôµù)', '946', 'F', SYSTIMESTAMP, SYSTIMESTAMP);
-insert into users values('sunh', 'ÀÌ¼±Èñ', '0000', '01019351568', '25162', '°­¿ø È«Ãµ±º ³»ÃÌ¸é ¼­¿ï¾ç¾ç°í¼Óµµ·Î 94', '1568-556', 'F', SYSTIMESTAMP, SYSTIMESTAMP);
-insert into users values('moaa', '±è¸ğ¾Æ', '0000', '01095674515', '24664', '°­¿ø ÀÎÁ¦±º »ó³²¸é ¼­¿ï¾ç¾ç°í¼Óµµ·Î 112', '1-256', 'F', SYSTIMESTAMP, SYSTIMESTAMP);
+insert into users values('yuda', 'ê¹€ìœ ë‹¤', '0000', '01011112222', '03054', 'ì„œìš¸ ì¢…ë¡œêµ¬ ì²­ì™€ëŒ€ë¡œ 73', '00000', 'F', SYSTIMESTAMP, SYSTIMESTAMP);
+insert into users values('hyun', 'ê¹€ìœ í˜„', '0000', '01012341234', '06035', 'ì„œìš¸ ê°•ë‚¨êµ¬ ê°€ë¡œìˆ˜ê¸¸ 5', '156', 'F', SYSTIMESTAMP, SYSTIMESTAMP);
+insert into users values('test', 'í…ŒìŠ¤íŠ¸', '0000', '01026262626', '26494', 'ê°•ì› ì›ì£¼ì‹œ í¥ì—…ë©´ ë¶„ì§€ë™ê¸¸ 27-8', '651-156', 'F', SYSTIMESTAMP, SYSTIMESTAMP);
+insert into users values('sion', 'ì´ì‹œì˜¨', '0000', '01045674567', '25630', 'ê°•ì› ê°•ë¦‰ì‹œ ê°•ë™ë©´ ì˜¤ì´ì„±í™©ê¸¸ 1-2', '262', 'F', SYSTIMESTAMP, SYSTIMESTAMP);
+insert into users values('maca', 'ë§ˆì¹´ë¡±', '0000', '01091919191', '15880', 'ê²½ê¸° êµ°í¬ì‹œ êµ°í¬ì²¨ë‹¨ì‚°ì—…2ë¡œ8ë²ˆê¸¸ 1', '1468-1515', 'F', SYSTIMESTAMP, SYSTIMESTAMP);
+insert into users values('mina', 'ë°•ë¯¼ì•„', '0000', '01099999999', '15888', 'ê²½ê¸° êµ°í¬ì‹œ ê±´ê±´ë¡œ 237-2', '1515í˜¸', 'F', SYSTIMESTAMP, SYSTIMESTAMP);
+insert into users values('rumi', 'ì´ë£¨ë¯¸', '0000', '01011111111', '54028', 'ì „ë¶ êµ°ì‚°ì‹œ ë¯¸ì›ë¡œ 109', '15ë™ 156í˜¸', 'F', SYSTIMESTAMP, SYSTIMESTAMP);
+insert into users values('aeri', 'ì •ì• ë¦¬', '0000', '01066666666', '63534', 'ì œì£¼íŠ¹ë³„ìì¹˜ë„ ì„œê·€í¬ì‹œ ê°€ê°€ë¡œ 14', '156-156', 'F', SYSTIMESTAMP, SYSTIMESTAMP);
+insert into users values('eunh', 'ê¹€ì€í•˜', '0000', '01045615665', '18148', 'ê²½ê¸° ì˜¤ì‚°ì‹œ ë¶€ì‚°ì¤‘ì•™ë¡œ 11', '684', 'F', SYSTIMESTAMP, SYSTIMESTAMP);
+insert into users values('uzin', 'ì˜¤ìœ ì§„', '0000', '01084456469', '06232', 'ì„œìš¸ ê°•ë‚¨êµ¬ ê°•ë‚¨ëŒ€ë¡œ 390', '56875', 'F', SYSTIMESTAMP, SYSTIMESTAMP);
+insert into users values('admin', 'ê´€ë¦¬ì', '0000', '01000000000', '13536', 'ê²½ê¸° ì„±ë‚¨ì‹œ ë¶„ë‹¹êµ¬ íŒêµì—­ë¡œ 4', '00000', 'F', SYSTIMESTAMP, SYSTIMESTAMP);
+insert into users values('blue', 'ê¹€íŒŒë‘', '0000', '01015615615', '31581', 'ì¶©ë‚¨ ì•„ì‚°ì‹œ ê³ ë¶ˆë¡œ 651-32', '156ë²ˆì§€', 'F', SYSTIMESTAMP, SYSTIMESTAMP);
+insert into users values('redd', 'ê¹€ë¹¨ê°•', '0000', '01059748412', '13473', 'ê²½ê¸° ì„±ë‚¨ì‹œ ë¶„ë‹¹êµ¬ ê²½ë¶€ê³ ì†ë„ë¡œ 409', '394í˜¸', 'F', SYSTIMESTAMP, SYSTIMESTAMP);
+insert into users values('domi', 'ë„ë¯¸ì†”', '0000', '01016164724', '13487', 'ê²½ê¸° ì„±ë‚¨ì‹œ ë¶„ë‹¹êµ¬ ëŒ€ì™•íŒêµë¡œ 579', '1ì¸µ 2í˜¸', 'F', SYSTIMESTAMP, SYSTIMESTAMP);
+insert into users values('dodo', 'ê¹€ë„ë„', '0000', '01094513462', '11126', 'ê²½ê¸° í¬ì²œì‹œ ì˜ì¤‘ë©´ ê°€ì˜ë¡œ 553-66', '256', 'F', SYSTIMESTAMP, SYSTIMESTAMP);
+insert into users values('nara', 'í•œë‚˜ë¼', '0000', '01065156219', '05291', 'ì„œìš¸ ê°•ë™êµ¬ ì²œí˜¸ëŒ€ë¡œ213ê¸¸ 14', '456-156', 'F', SYSTIMESTAMP, SYSTIMESTAMP);
+insert into users values('kiki', 'ê¹€í‚¤í‚¤', '0000', '01091573296', '26392', 'ê°•ì› ì›ì£¼ì‹œ ëŠ¥ë¼ë™ê¸¸ 7', '614', 'F', SYSTIMESTAMP, SYSTIMESTAMP);
+insert into users values('toto', 'ê¹€í† í† ', '0000', '01091465129', '24664', 'ê°•ì› ì¸ì œêµ° ìƒë‚¨ë©´ ì„œìš¸ì–‘ì–‘ê³ ì†ë„ë¡œ 109', '2156ë²ˆì§€', 'F', SYSTIMESTAMP, SYSTIMESTAMP);
+insert into users values('momo', 'ì´ëª¨ëª¨', '0000', '01091436621', '06036', 'ì„œìš¸ ê°•ë‚¨êµ¬ ê°€ë¡œìˆ˜ê¸¸ 12', '1ì¸µ 56í˜¸', 'F', SYSTIMESTAMP, SYSTIMESTAMP);
+insert into users values('jiji', 'ì´ì§€ì€', '0000', '01019561556', '06034', 'ì„œìš¸ ê°•ë‚¨êµ¬ ê°€ë¡œìˆ˜ê¸¸ 31 (ì„ ë¹Œë”©)', '946', 'F', SYSTIMESTAMP, SYSTIMESTAMP);
+insert into users values('sunh', 'ì´ì„ í¬', '0000', '01019351568', '25162', 'ê°•ì› í™ì²œêµ° ë‚´ì´Œë©´ ì„œìš¸ì–‘ì–‘ê³ ì†ë„ë¡œ 94', '1568-556', 'F', SYSTIMESTAMP, SYSTIMESTAMP);
+insert into users values('moaa', 'ê¹€ëª¨ì•„', '0000', '01095674515', '24664', 'ê°•ì› ì¸ì œêµ° ìƒë‚¨ë©´ ì„œìš¸ì–‘ì–‘ê³ ì†ë„ë¡œ 112', '1-256', 'F', SYSTIMESTAMP, SYSTIMESTAMP);
 
 CREATE TABLE goods_state (
 	goods_state_id	number		primary key,
 	goods_state_name	varchar2(30)		not NULL
 );
 
+insert into goods_state values(1, 'íŒë§¤ ì˜ˆì •');
+insert into goods_state values(2, 'íŒë§¤ì¤‘');
+insert into goods_state values(3, 'ì¼ì‹œ í’ˆì ˆ');
+insert into goods_state values(4, 'ë‹¨ì¢…');
+
 CREATE TABLE goods_class (
 	goods_class_id	number		primary key,
 	goods_class_name	varchar2(30)		not NULL
 );
+
+insert into goods_state values(1, 'ì˜ë¥˜');
+insert into goods_state values(2, 'ì¡í™”');
+insert into goods_state values(3, 'ë„ì„œ');
 
 CREATE TABLE goods (
 	goods_id	number		primary key,

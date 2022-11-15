@@ -8,9 +8,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.naratmal.mvc.dao.CartDao;
 import com.naratmal.mvc.exception.DuplicatedException;
+import com.naratmal.mvc.exception.NotDBInputException;
 import com.naratmal.mvc.exception.NotExistException;
 import com.naratmal.mvc.exception.NotLoginException;
 import com.naratmal.mvc.vo.Cart;
+import com.naratmal.mvc.vo.GoodsClass;
 
 import lombok.RequiredArgsConstructor;
 
@@ -35,9 +37,10 @@ public class CartServiceImpl implements CartService {
 	 * @param: Cart(cartId와 cartQty를 받아 해당 장바구니의 수량을 변경)
 	 * */
 	@Override
-	public void updateCart(Cart cart) throws SQLException, NotLoginException, NotExistException {
-		// TODO Auto-generated method stub
-
+	public void updateCart(Cart cart) throws SQLException, NotLoginException, NotExistException {		
+		int result = cartDao.updateCart(cart);
+		System.out.println(result);
+		if (result != 1) throw new SQLException("장바구니 내역이 정상적으로 수정되지 않았습니다.");
 	}
 
 	/**

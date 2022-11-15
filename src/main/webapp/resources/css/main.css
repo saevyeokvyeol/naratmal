@@ -8,3 +8,7 @@
 }
 
 #main-content-body {width: 1200px; margin: auto;}
+#header {display: flex; justify-content: space-between;}
+#header > div {display: flex; justify-content: space-between;}
+
+img {max-height: 100px; max-width: 100px;}

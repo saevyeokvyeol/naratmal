@@ -28,29 +28,10 @@
 		values(cart_id_seq.nextval, #{cartQty}, #{userId}, #{goodsId}, systimestamp, systimestamp)
 	</insert>
 	
-	<update id="updateGoods" parameterType="goods">
-		update goods
-		<trim prefix="set" prefixOverrides=", " suffix=", goods_update_date = systimestamp">
-			<if test="goodsClassId != null">
-				goods_class_id = #{goodsClassId}
-			</if>
-			<if test="goodsStateId != null">
-				, goods_State_Id = #{goodsStateId}
-			</if>
-			<if test="goodsName != null">
-				, goods_Name = #{goodsName}
-			</if>
-			<if test="goodsDetail != null">
-				, goods_Detail = #{goodsDetail}
-			</if>
-			<if test="goodsThumbnail != null">
-				, goods_Thumbnail = #{goodsThumbnail}
-			</if>
-			<if test="goodsPrice != null">
-				, goods_Price = #{goodsPrice}
-			</if>
-		</trim>
-		where goods_id = #{goodsId}
+	<update id="updateCart" parameterType="cart">
+		update cart
+		set cart_qty = #{cartQty}, cart_update_date = systimestamp
+		where cart_id = #{cartId}
 	</update>
 	
 	<delete id="deleteCart" parameterType="cart">
